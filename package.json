@@ -10,7 +10,8 @@
     "gamedig": "^2.0.23",
     "moment": "^2.29.1",
     "mongoose": "^5.10.10",
-    "mongoose-sequence": "^5.3.0"
+    "mongoose-sequence": "^5.3.0",
+    "number-to-emoji": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {
