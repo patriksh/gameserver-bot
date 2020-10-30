@@ -4,7 +4,7 @@ const Pagination = require('discord-paginationembed');
 module.exports = {
     name: 'games',
     description: 'Lists supported games',
-    usage: 'games <search|optional>',
+    usage: 'games',
     aliases: [],
     permissions: ['ADMINISTRATOR'],
     botPermissions: ['SEND_MESSAGES'],

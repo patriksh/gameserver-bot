@@ -15,7 +15,7 @@ module.exports.status = async function(server) {
         response.title = '<:gsbot_online:771782245589581884> ' + server.name;
         response.data = 'Map: ' + status.map + '\nPlayers: ' + status.players.length + '/' + status.maxplayers + '\nConnect: ' + status.connect;
     }).catch(error => {
-        response.raw = status;
+        response.raw = error;
         response.title = '<:gsbot_offline:771782255374761985>' + server.name;
         response.data = 'Server is unreachable.';
     });

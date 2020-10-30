@@ -40,7 +40,8 @@ module.exports.execute = async(bot, msg, args, data) => {
     if(count >= bot.config.serverLimit)
         return bot.embeds.error(msg, 'Current limit of gameservers per guild is `' + bot.config.serverLimit + '`.');
 
-    let serverDB = new serversDB({ guild: msg.guild.id, name: name, game: game, host: ip, port: port });
+    let server = { guild: msg.guild.id, name: name, game: game, host: ip, port: port };
+    let serverDB = new serversDB(server);
     await serverDB.save().catch(err => {
         bot.logger.error('MongoDB server DB error - ' + err);
         return bot.embeds.dbError(msg);
@@ -50,6 +51,12 @@ module.exports.execute = async(bot, msg, args, data) => {
     let embed = new Discord.MessageEmbed()
         .setColor(bot.config.color)
         .setTitle('Server added')
-        .setDescription('Use !servers to see server list.');
-    return msg.channel.send(embed);
+        .setDescription('Querying the server for info.');
+    msg.channel.send(embed).then(async m => {
+        await bot.tools.status(server).then(response => {
+            embed.setDescription(response.title + '\n' + response.data);
+        });
+
+        m.edit(embed);
+    });
 }
