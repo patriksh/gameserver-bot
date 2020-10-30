@@ -19,7 +19,7 @@ module.exports.execute = async(bot, msg, args, data) => {
         return bot.embeds.cmdError(msg, 'Server name can\'t be empty.', module.exports);
 
     let serversDB = bot.data.getServerSchema();
-    let servers = await serversDB.find({ name: { $regex: name, $options: 'i' }, guild: msg.guild.id }).catch(err => {
+    let servers = await serversDB.find({ name: { $regex: name, $options: 'i' }, guild: msg.guild.id }).limit(10).catch(err => {
         bot.logger.error('MongoDB server DB error - ' + err);
         return bot.embeds.dbError(msg);
     });

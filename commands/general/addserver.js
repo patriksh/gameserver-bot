@@ -16,9 +16,12 @@ module.exports.execute = async(bot, msg, args, data) => {
     let game = args[0];
     let ip = args[1];
     let name = args.splice(2).join(' ').trim();
+    let prefix = !data.guild.prefix ? bot.config.prefix : data.guild.prefix;
 
     if(game === undefined)
-        return bot.embeds.cmdError(msg, 'Game type can\'t be empty.', module.exports);
+        return bot.embeds.cmdError(msg, 'Game can\'t be empty.', module.exports);
+    if(!(game in bot.data.games))
+        return bot.embeds.error(msg, 'Invalid game.\nUse `' + prefix + 'games` to see available games.');
     if(ip === undefined)
         return bot.embeds.cmdError(msg, 'Host can\'t be empty.', module.exports);
     if(name == '')
@@ -33,6 +36,10 @@ module.exports.execute = async(bot, msg, args, data) => {
     }
 
     let serversDB = bot.data.getServerSchema();
+    let count = await serversDB.count({ guild: msg.guild.id });
+    if(count >= bot.config.serverLimit)
+        return bot.embeds.error(msg, 'Current limit of gameservers per guild is `' + bot.config.serverLimit + '`.');
+
     let serverDB = new serversDB({ guild: msg.guild.id, name: name, game: game, host: ip, port: port });
     await serverDB.save().catch(err => {
         bot.logger.error('MongoDB server DB error - ' + err);

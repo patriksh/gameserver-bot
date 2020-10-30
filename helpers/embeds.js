@@ -46,6 +46,15 @@ module.exports.cooldown = (msg, time) => {
     return msg.channel.send(embed);
 };
 
+module.exports.error = (msg, error) => {
+    let embed = new Discord.MessageEmbed()
+        .setColor('#ff0000')
+        .setTitle('Error')
+        .setDescription(error);
+
+    return msg.channel.send(embed);
+};
+
 module.exports.cmdError = (msg, error, cmdFile) => {
     let embed = new Discord.MessageEmbed()
         .setColor('#ff0000')
