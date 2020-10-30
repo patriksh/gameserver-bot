@@ -17,24 +17,36 @@ module.exports.execute = async(bot, msg, args, data) => {
     let search = { guild: msg.guild.id };
     if(game !== undefined) search.game = game
 
-    let serversDB = bot.data.getServerSchema();
-    let servers = await serversDB.find(search).catch(err => {
-        bot.logger.error('MongoDB server DB error - ' + err);
-        return bot.embeds.dbError(msg);
-    });
+    let prefix = !data.guild.prefix ? bot.config.prefix : data.guild.prefix;
 
     let embed = new Discord.MessageEmbed()
         .setColor(bot.config.color)
-        .setTitle('Servers');
+        .setTitle('Loading...')
+        .setDescription('Querying the servers for info.');
+    msg.channel.send(embed).then(async m => {
+        let serversDB = bot.data.getServerSchema();
+        let servers = await serversDB.find(search).catch(err => {
+            bot.logger.error('MongoDB server DB error - ' + err);
+            return bot.embeds.dbError(msg);
+        });
 
-    let stats = [];
-    servers.forEach(server => {
-        stats.push(bot.tools.status(server).then(response => {
-            embed.addField(response.title, response.data);
-        }));
+        let embed = new Discord.MessageEmbed()
+            .setColor(bot.config.color)
+            .setTitle('Servers (' + servers.length + ')');
+
+        let stats = [];
+        servers.forEach(server => {
+            stats.push(bot.tools.status(server).then(response => {
+                embed.addField(response.title, response.data);
+            }));
+        });
+
+        if(!servers.length) {
+            embed.setDescription('No servers added.');
+            embed.setFooter('Tip: use ' + prefix + 'add <game> <host> <name> to add a server.')
+        }
+
+        await Promise.all(stats);
+        m.edit(embed);
     });
-
-    await Promise.all(stats);
-
-    return msg.channel.send(embed);
 }

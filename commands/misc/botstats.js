@@ -22,7 +22,8 @@ module.exports.execute = async(bot, msg, args, data) => {
             { name: 'Guilds', value: bot.guilds.cache.size, inline: true},
             { name: 'Users', value: bot.users.cache.size, inline: true },
             { name: 'Latency', value: bot.ws.ping + 'ms', inline: true },
-            { name: 'Library', value: 'Discord.js V' + Discord.version }
+            { name: 'Library', value: 'Discord.js V' + Discord.version },
+            { name: 'Version', value: '0.1 beta' },
         );
 
     return msg.channel.send(embed);

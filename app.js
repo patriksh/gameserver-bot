@@ -11,6 +11,7 @@ const readdir = util.promisify(fs.readdir);
 bot.events = new Discord.Collection();
 bot.commands = new Discord.Collection();
 bot.data = require('./database/MongoDB.js');
+bot.data.games = require('./database/games.json');
 bot.embeds = require('./helpers/embeds.js');
 bot.logger = require('./helpers/logger.js');
 bot.tools = require('./helpers/tools.js');
