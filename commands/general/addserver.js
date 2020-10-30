@@ -21,11 +21,11 @@ module.exports.execute = async(bot, msg, args, data) => {
     let name = args.splice(2).join(' ').trim();
     let prefix = !data.guild.prefix ? bot.config.prefix : data.guild.prefix;
 
-    if(game === undefined)
+    if(game == undefined)
         return bot.embeds.cmdError(msg, 'Game can\'t be empty.', module.exports);
     if(!(game in bot.data.games))
         return bot.embeds.error(msg, 'Invalid game.\nUse `' + prefix + 'games` to see available games.');
-    if(host === undefined)
+    if(host == undefined)
         return bot.embeds.cmdError(msg, 'Host can\'t be empty.', module.exports);
 
     let hostSplit = host.split(':');
