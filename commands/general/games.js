@@ -6,8 +6,8 @@ module.exports = {
     description: 'Lists supported games',
     usage: 'games',
     aliases: [],
-    permissions: ['ADMINISTRATOR'],
-    botPermissions: ['SEND_MESSAGES'],
+    permissions: [],
+    botPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
     nsfw: false,
     cooldown: 1000,
     ownerOnly: false
