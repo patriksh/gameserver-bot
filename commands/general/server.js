@@ -4,7 +4,7 @@ module.exports = {
     name: 'server',
     description: 'Show info about a server.',
     usage: 'server <name>',
-    aliases: ['info', 's'],
+    aliases: ['s'],
     permissions: [],
     botPermissions: ['SEND_MESSAGES'],
     nsfw: false,

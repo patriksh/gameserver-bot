@@ -50,7 +50,7 @@ module.exports.execute = async(bot, msg, args, data) => {
 
                 if(server) {
                     serversDB.deleteOne({ id: server.id }).then(() => {
-                        m.reactions.removeAll().catch(e => bot.embeds.log('Missing MANAGE_MESSAGES.'));
+                        m.reactions.removeAll();
                         let embed = new Discord.MessageEmbed()
                             .setColor(bot.config.color)
                             .setTitle('Server deleted')
@@ -64,7 +64,7 @@ module.exports.execute = async(bot, msg, args, data) => {
                     return bot.embeds.dbError(msg);
                 }
             }).catch(() => {
-                m.reactions.removeAll().catch(e => bot.embeds.log('Missing MANAGE_MESSAGES.'));
+                m.reactions.removeAll();
                 let embed = new Discord.MessageEmbed()
                     .setColor(bot.config.color)
                     .setTitle('Server delete cancelled')

@@ -13,15 +13,5 @@ module.exports.getGuildDB = async function (guildID) {
     }
 }
 
+module.exports.getGuildSchema = () => guildsDB;
 module.exports.getServerSchema = () => serversDB;
-
-// module.exports.getServerDB = async function (serverID, guildID) {
-//     let serverDB = await serversDB.findOne({ id: serverID, guildID: guildID });
-//     if(serverDB) {
-//         return serverDB;
-//     } else {
-//         serverDB = new serversDB({ id: serverID, guildID: guildID });
-//         await serverDB.save().catch(err => bot.logger.error('MongoDB server DB error - ' + err));
-//         return serverDB;
-//     }
-// }
