@@ -5,7 +5,8 @@ module.exports.status = async function(server) {
     let options = {
         type: server.game,
         host: server.host,
-        socketTimeout: 5000
+        socketTimeout: 3000,
+        maxAttempts: 3
     };
     if(server.port) options.port = server.port;
 

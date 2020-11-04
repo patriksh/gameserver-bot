@@ -14,6 +14,8 @@ module.exports = {
 }
 
 module.exports.execute = async(bot, msg, args, data) => {
+    let hasManage = msg.guild.me.permissions.has('MANAGE_MESSAGES');
+
     let name = args.join(' ').trim();
     if(name == '')
         return bot.embeds.cmdError(msg, 'Server name can\'t be empty.', module.exports);
@@ -41,8 +43,9 @@ module.exports.execute = async(bot, msg, args, data) => {
         embed.addField('Servers', embed_servers);
 
         msg.channel.send(embed).then(m => {
-            servers.forEach((server, key) => m.react(Num2Emoji.toEmoji(key + 1)));
+            if(!hasManage) msg.channel.send('**Tip**: If you give me `Manage Messages` permissions, I\'ll remove the reactions myself.');
 
+            servers.forEach((server, key) => m.react(Num2Emoji.toEmoji(key + 1)));
             let filter = (reaction, user) => user.id == msg.author.id && parseFloat(Num2Emoji.fromEmoji(reaction.emoji.name)) > 0;
             m.awaitReactions(filter, { max: 1, time: 30000 }).then(collected => {
                 let num = Num2Emoji.fromEmoji(collected.first().emoji.name);
@@ -50,7 +53,7 @@ module.exports.execute = async(bot, msg, args, data) => {
 
                 if(server) {
                     serversDB.deleteOne({ id: server.id }).then(() => {
-                        m.reactions.removeAll();
+                        if(hasManage) m.reactions.removeAll();
                         let embed = new Discord.MessageEmbed()
                             .setColor(bot.config.color)
                             .setTitle('Server deleted')
@@ -64,7 +67,7 @@ module.exports.execute = async(bot, msg, args, data) => {
                     return bot.embeds.dbError(msg);
                 }
             }).catch(() => {
-                m.reactions.removeAll();
+                if(hasManage) m.reactions.removeAll();
                 let embed = new Discord.MessageEmbed()
                     .setColor(bot.config.color)
                     .setTitle('Server delete cancelled')
