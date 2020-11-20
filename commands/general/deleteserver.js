@@ -7,7 +7,7 @@ module.exports = {
     usage: 'delete <name>',
     aliases: ['delete', 'd'],
     permissions: ['ADMINISTRATOR'],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 500,
     ownerOnly: false

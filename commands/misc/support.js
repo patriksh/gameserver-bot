@@ -6,7 +6,7 @@ module.exports = {
     usage: 'support',
     aliases: ['bug', 'error', 'suggest'],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 0,
     ownerOnly: false

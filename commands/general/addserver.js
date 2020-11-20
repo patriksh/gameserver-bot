@@ -9,7 +9,7 @@ module.exports = {
     usage: 'addserver <game> <ip:port> <name>',
     aliases: ['add', 'a'],
     permissions: ['ADMINISTRATOR'],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 500,
     ownerOnly: false

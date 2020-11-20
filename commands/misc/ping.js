@@ -6,7 +6,7 @@ module.exports = {
     usage: 'ping',
     aliases: ['latency'],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 2000,
     ownerOnly: false

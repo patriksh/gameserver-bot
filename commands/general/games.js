@@ -6,7 +6,7 @@ module.exports = {
     usage: 'games',
     aliases: [],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 1000,
     ownerOnly: false

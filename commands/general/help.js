@@ -9,7 +9,7 @@ module.exports = {
     usage: 'help',
     aliases: ['commands', 'cmds'],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 0,
     ownerOnly: false

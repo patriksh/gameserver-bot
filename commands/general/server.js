@@ -6,7 +6,7 @@ module.exports = {
     usage: 'server <name>',
     aliases: ['s'],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 2000,
     ownerOnly: false

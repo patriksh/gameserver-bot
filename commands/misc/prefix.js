@@ -6,7 +6,7 @@ module.exports = {
     usage: 'prefix <string>',
     aliases: [],
     permissions: ['ADMINISTRATOR'],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 1000,
     ownerOnly: false

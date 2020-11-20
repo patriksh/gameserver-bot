@@ -6,7 +6,7 @@ module.exports = {
     usage: 'invite',
     aliases: [],
     permissions: [],
-    botPermissions: ['SEND_MESSAGES'],
+    botPermissions: [],
     nsfw: false,
     cooldown: 0,
     ownerOnly: true
