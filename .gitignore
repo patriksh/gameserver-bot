@@ -1,3 +1,8 @@
 /config.json
+<<<<<<< HEAD
 /node_modules
 /package-lock.json
+=======
+/package-lock.json
+/node_modules
+>>>>>>> 876595be5ed9a4be78eb7d3c7b02dc9b055ae138
