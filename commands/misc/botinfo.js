@@ -21,9 +21,9 @@ module.exports.execute = async(bot, msg, args, data) => {
         .setColor(bot.config.color)
         .setTitle(bot.user.username)
         .setThumbnail(bot.user.displayAvatarURL())
-        .setDescription('Simple yet powerful bot that allows you to check your current gameserver players, map & more.')
+        .setDescription('Bot that allows you to show live information (map, players) about your gameservers (CoD, Minecraft, CS:GO & more).')
         .addFields(
-            { name: 'Features', value: 'Show server players, map & more.\nSupport for 200+ games.\nTrack up to 15 gameservers.' },
+            { name: 'Features', value: 'Show server players, map & more.\nSupport for 200+ games.\nUp to 15+ gameservers per guild.' },
             { name: 'Guilds', value: guilds.toLocaleLowerCase(), inline: true },
             { name: 'Users', value: users.toLocaleLowerCase(), inline: true },
             { name: 'Ping', value: ping + ' ms', inline: true },

@@ -14,7 +14,6 @@ module.exports = {
 
 module.exports.execute = async(bot, msg, args, data) => {
     let embed = new Discord.MessageEmbed()
-        .setAuthor(bot.user.username + ' ping', bot.user.displayAvatarURL())
         .setDescription('**' + bot.ws.ping + '** ms')
         .setColor(bot.config.color);
 

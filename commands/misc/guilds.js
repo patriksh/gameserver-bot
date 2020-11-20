@@ -24,5 +24,5 @@ module.exports.execute = async(bot, msg, args, data) => {
         .setColor(bot.config.color)
         .setTitle('Guilds (' + count + ')')
         .setDescription(description);
-    msg.channel.send(embed);
+    return msg.channel.send(embed);
 }
