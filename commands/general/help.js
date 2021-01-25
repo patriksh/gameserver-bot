@@ -22,7 +22,7 @@ module.exports.execute = async(bot, msg, args, data) => {
         .setTitle('Help')
         .setFooter(bot.config.credits)
         .addFields(
-            { name: 'Status', value: '`' + prefix + 'servers` - show all added servers.\n`' + prefix + 'server <name>` - show a specific server.'  },
+            { name: 'Status', value: '`' + prefix + 'servers` - show all added servers.\n`' + prefix + 'server <name>` - show a specific server.\n`' + prefix + 'players <name>` - show players on a server.'  },
             { name: 'Config', value: '`' + prefix + 'addserver <game> <ip:port> <name>` - add a gameserver to track.\n`' + prefix + 'deleteserver <name>` - delete a gameserver.\n`' + prefix + 'prefix <text>` - set a new prefix.\n`' + prefix + 'games` - list supported games and their "codes".' },
             { name: 'Misc', value: '`' + prefix + 'info` - information about the bot.\n`' + prefix + 'ping` - useless bot latency.\n`' + prefix + 'invite` - invite the bot to your server.\n`' + prefix + 'support` - get invite to support server.' },
         );

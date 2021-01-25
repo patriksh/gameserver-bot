@@ -42,12 +42,17 @@ module.exports.players = async function(server) {
         response.title = '<:gsbot_online:771782245589581884> ' + server.name;
         response.data = (status.players.length) ? 'Total players online: ' + status.players.length : 'No one is playing at the moment.';
 
+        let useFrags = status.players.some(p => p.hasOwnProperty('frags'));
+
         for(let i = 0; i < status.players.length; i++) {
             let player = status.players[i];
             if(!player.name) continue;
 
             response.names.push(player.name);
-            if(player.frags) response.frags.push(player.frags);
+            if(useFrags) {
+                let val = (player.frags) ? player.frags : 0;
+                response.frags.push(val);
+            }
             if(player.kills) response.frags.push(player.kills);
             if(player.ping) response.pings.push(player.ping);
         }
