@@ -1,5 +1,7 @@
 [![Discord Bots](https://top.gg/api/widget/status/766644852061372416.svg)](https://top.gg/bot/766644852061372416) [![Discord Bots](https://top.gg/api/widget/servers/766644852061372416.svg)](https://top.gg/bot/766644852061372416)
 
+* This bot is no longer officialy maintained...
+
 # GameserverBot
 Simple yet powerful bot that allows you to check your current players, map & more.
 
